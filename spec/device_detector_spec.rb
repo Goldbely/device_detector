@@ -78,7 +78,7 @@ describe DeviceDetector do
       end
     end
 
-    describe 'firefox mobile phone' do
+    describe 'firefox mobile phone with major/minor version' do
       let(:user_agent) { 'Mozilla/5.0 (Android 7.0; Mobile; rv:53.0) Gecko/53.0 Firefox/53.0' }
 
       it 'detects smartphone' do
@@ -86,10 +86,26 @@ describe DeviceDetector do
       end
     end
 
-    describe 'firefox mobile tablet' do
+    describe 'firefox mobile phone with major version' do
+      let(:user_agent) { 'Mozilla/5.0 (Android 9; Mobile; rv:101.0) Gecko/101.0 Firefox/101.0' }
+  
+      it 'detects smartphone' do
+        value(client.device_type).must_equal 'smartphone'
+      end
+    end
+
+    describe 'firefox mobile tablet with major/minor version' do
       let(:user_agent) { 'Mozilla/5.0 (Android 6.0.1; Tablet; rv:47.0) Gecko/47.0 Firefox/47.0' }
 
       it 'detects tablet' do
+        value(client.device_type).must_equal 'tablet'
+      end
+    end
+
+    describe 'firefox mobile phone with major version' do
+      let(:user_agent) { 'Mozilla/5.0 (Android 9; Tablet; rv:101.0) Gecko/101.0 Firefox/101.0' }
+
+      it 'detects smartphone' do
         value(client.device_type).must_equal 'tablet'
       end
     end
